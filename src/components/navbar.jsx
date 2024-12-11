@@ -1,7 +1,9 @@
 import brushStroke from "../assets/brush-stroke.png";
-export default function Navbar() {
+import MenuIcon from "../assets/menu-icon.png";
+import menuBackground from "../assets/nav-container.webp";
+export default function Navbar({ setMenu }) {
   return (
-    <nav className="flex justify-between gap-5 items-center px-5 py-2 font-bold text-gray-600">
+    <nav className="flex justify-between gap-5 items-center px-5 py-2 font-bold text-gray-600 w-full">
       <div className="flex gap-2">
         <img
           src="https://i0.wp.com/www.mfi.edu.ph/wp-content/uploads/2024/09/MFI-Logo_lr-2.png?resize=450%2C450&ssl=1"
@@ -38,6 +40,14 @@ export default function Navbar() {
         <a href="#" className="hover:text-blue-700 drop-shadow-sm">
           Projects
         </a>
+      </div>
+      <div className="lg:hidden">
+        <img
+          src={MenuIcon}
+          alt="menuBtn"
+          className="w-[50px] hover:drop-shadow-lg cursor-pointer"
+          onClick={() => setMenu(true)}
+        />
       </div>
     </nav>
   );

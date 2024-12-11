@@ -4,6 +4,8 @@ import gottfrid from "./assets/gottfrid.PNG";
 import ProjectCard from "./components/project-card";
 import brushStroke from "./assets/brush-stroke.png";
 import oldParchment from "./assets/old-parchment.webp";
+import menuBackground from "./assets/nav-container.webp";
+import { useState } from "react";
 
 const projects = [
   {
@@ -25,7 +27,9 @@ const projects = [
     img: "https://codezips.com/wp-content/uploads/2020/08/stud_man.png",
   },
 ];
+
 function App() {
+  const [menu, setMenu] = useState(false);
   return (
     <main
       className="w-screen h-screen flex justify-center overflow-auto "
@@ -35,8 +39,8 @@ function App() {
         backgroundSize: "cover",
       }}
     >
-      <div className="flex-1 min-h-0 min-w-0 flex flex-col gap-5 max-w-[1280px]">
-        <Navbar />
+      <div className="flex-1 min-h-0 min-w-0 flex flex-col  gap-5 max-w-[1280px]">
+        <Navbar setMenu={setMenu} />
 
         <section className="flex flex-col gap-5 items-center my-10">
           <img
@@ -80,6 +84,37 @@ function App() {
           </div>
         </section>
       </div>
+      {menu && (
+        <div className="absolute w-screen h-screen left-0 top-0 bg-black/50 flex justify-center items-center">
+          <div
+            className="flex flex-col w-[300px] h-[400px]  justify-center items-center font-bold text-2xl gap-5 drop-shadow-lg"
+            style={{
+              backgroundImage: `url(${menuBackground})`,
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <h1 className="text-black/70 hover:line-through cursor-pointer">
+              Home
+            </h1>
+            <h1 className="text-black/70 hover:line-through cursor-pointer">
+              About
+            </h1>
+            <h1 className="text-black/70 hover:line-through cursor-pointer">
+              Contacts
+            </h1>
+            <h1 className="text-black/70 hover:line-through cursor-pointer">
+              Projects
+            </h1>
+            <h1
+              className="text-red-900/70 hover:line-through cursor-pointer"
+              onClick={() => setMenu(false)}
+            >
+              Cancel
+            </h1>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

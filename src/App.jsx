@@ -4,6 +4,27 @@ import gottfrid from "./assets/gottfrid.PNG";
 import ProjectCard from "./components/project-card";
 import brushStroke from "./assets/brush-stroke.png";
 import oldParchment from "./assets/old-parchment.webp";
+
+const projects = [
+  {
+    title: "Inventory System",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, doloribus obcaecati? Distinctio reiciendis alias veritatis atque, magni sit facere consequuntur nemo! Vitae, nobis quia eveniet error vel eaque placeat sint?",
+    img: "https://images.ctfassets.net/hfb264dqso7g/7BIuhKgTlUYlNRQrWwd9FE/d3bd1aa1d0a9dadd21a4601035a2e123/multichannel-orders-screenshot.jpg",
+  },
+  {
+    title: "Point of Sale System",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, doloribus obcaecati? Distinctio reiciendis alias veritatis atque, magni sit facere consequuntur nemo! Vitae, nobis quia eveniet error vel eaque placeat sint?",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHWiipyUrSmD-gj_6Qh8oO32GTABB698j-XA&s",
+  },
+  {
+    title: "Student Management System",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, doloribus obcaecati? Distinctio reiciendis alias veritatis atque, magni sit facere consequuntur nemo! Vitae, nobis quia eveniet error vel eaque placeat sint?",
+    img: "https://codezips.com/wp-content/uploads/2020/08/stud_man.png",
+  },
+];
 function App() {
   return (
     <main
@@ -41,9 +62,9 @@ function App() {
           </h1>
         </div>
         <section className="flex gap-8 justify-between flex-col lg:flex-row items-center ">
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+          {projects?.map((project) => (
+            <ProjectCard data={project} />
+          ))}
         </section>
 
         <section className="flex justify-center my-10 pb-10">

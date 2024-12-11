@@ -9,16 +9,18 @@ export default function Navbar() {
           className="w-[50px]"
         />
         <div className="flex flex-col">
-          <h1 className="text-black text-xs">MFI Polytechnic Institute Inc.</h1>
-          <h1 className="text-yellow-600 text-xl drop-shadow-md underline">
+          <h1 className="text-black/70 text-xs">
+            MFI Polytechnic Institute Inc.
+          </h1>
+          <h1 className="text-black text-xl drop-shadow-lg  ">
             Project Gallery
           </h1>
         </div>
       </div>
-      <div className="flex items-center gap-5">
+      <div className="hidden lg:flex items-center gap-5">
         {/* <img src={brushStroke} alt="" /> */}
-        <h1
-          className="px-5 py-3 text-blue-700 drop-shadow-sm"
+        <div
+          className="px-5 py-3 text-blue-700 drop-shadow-sm hover:text-blue-700 "
           style={{
             backgroundImage: `url(${brushStroke})`,
             backgroundRepeat: "no-repeat",
@@ -26,10 +28,16 @@ export default function Navbar() {
           }}
         >
           Home
-        </h1>
-        <a href="#">About</a>
-        <a href="#">Contacts</a>
-        <a href="#">Projects</a>
+        </div>
+        <a href="#" className="hover:text-blue-700 drop-shadow-sm">
+          About
+        </a>
+        <a href="#" className="hover:text-blue-700 drop-shadow-sm">
+          Contacts
+        </a>
+        <a href="#" className="hover:text-blue-700 drop-shadow-sm">
+          Projects
+        </a>
       </div>
     </nav>
   );

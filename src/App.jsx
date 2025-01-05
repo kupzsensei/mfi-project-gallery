@@ -4,8 +4,10 @@ import gottfrid from "./assets/gottfrid.PNG";
 import ProjectCard from "./components/project-card";
 import brushStroke from "./assets/brush-stroke.png";
 import oldParchment from "./assets/old-parchment.webp";
+import signage from "./assets/signage.png";
 import menuBackground from "./assets/nav-container.webp";
 import { useState } from "react";
+import "animate.css";
 
 const projects = [
   {
@@ -46,14 +48,29 @@ function App() {
           <img
             src={gottfrid}
             alt="logo"
-            className="lg:h-[350px] h-[200px] drop-shadow-md"
+            className="lg:h-[350px] h-[200px] drop-shadow-md animate__pulse animate__animated "
           />
           <h1 className="font-bold text-2xl text-yellow-500/80 drop-shadow-md">
             Beyond Skills .... a Better Life..
           </h1>
         </section>
         <div className="flex justify-between gap-5 items-center pl-5">
-          <h1 className="font-bold">Featured Projects</h1>
+          <div
+            style={{
+              backgroundImage: `url(${signage})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+            }}
+            className="h-[120px] w-[150px] flex justify-center items-center  flex-col"
+          >
+            <h1 className="font-bold drop-shadow-lg text-black -translate-y-3">
+              Featured{" "}
+            </h1>
+            <h1 className="font-bold drop-shadow-lg text-black -translate-y-3">
+              Projects{" "}
+            </h1>
+          </div>
           <h1
             className="font-bold hover:underline cursor-pointer py-6 px-5 hover:text-blue-700 drop-shadow-sm"
             style={{
@@ -90,8 +107,9 @@ function App() {
             className="flex flex-col w-[300px] h-[400px]  justify-center items-center font-bold text-2xl gap-5 drop-shadow-lg"
             style={{
               backgroundImage: `url(${menuBackground})`,
-              backgroundSize: "contain",
+              backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
             }}
           >
             <h1 className="text-black/70 hover:line-through cursor-pointer">

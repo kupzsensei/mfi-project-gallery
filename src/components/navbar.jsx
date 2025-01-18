@@ -24,8 +24,8 @@ export default function Navbar({ setMenu }) {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "px-5 py-4 text-blue-700 drop-shadow-sm hover:text-blue-700"
-              : "px-5 py-4  drop-shadow-sm hover:text-blue-700"
+              ? "px-5 py-4 text-white drop-shadow-sm hover:text-white"
+              : "px-5 py-4  drop-shadow-sm hover:text-white"
           }
           style={({ isActive }) =>
             isActive
@@ -43,8 +43,8 @@ export default function Navbar({ setMenu }) {
           to="/about"
           className={({ isActive }) =>
             isActive
-              ? "px-5 py-4 text-blue-700 drop-shadow-sm hover:text-blue-700"
-              : "px-5 py-4  drop-shadow-sm hover:text-blue-700"
+              ? "px-5 py-4 text-white drop-shadow-sm hover:text-white"
+              : "px-5 py-4  drop-shadow-sm hover:text-white"
           }
           style={({ isActive }) =>
             isActive
@@ -62,8 +62,8 @@ export default function Navbar({ setMenu }) {
           to="/contacts"
           className={({ isActive }) =>
             isActive
-              ? "px-5 py-4 text-blue-700 drop-shadow-sm hover:text-blue-700"
-              : "px-5 py-4  drop-shadow-sm hover:text-blue-700"
+              ? "px-5 py-4 text-white drop-shadow-sm hover:text-white"
+              : "px-5 py-4  drop-shadow-sm hover:text-white"
           }
           style={({ isActive }) =>
             isActive
@@ -81,8 +81,8 @@ export default function Navbar({ setMenu }) {
           to="/projects"
           className={({ isActive }) =>
             isActive
-              ? "px-5 py-4 text-blue-700 drop-shadow-sm hover:text-blue-700"
-              : "px-5 py-4  drop-shadow-sm hover:text-blue-700"
+              ? "px-5 py-4 text-white drop-shadow-sm hover:text-white"
+              : "px-5 py-4  drop-shadow-sm hover:text-white"
           }
           style={({ isActive }) =>
             isActive

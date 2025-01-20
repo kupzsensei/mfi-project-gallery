@@ -1,7 +1,7 @@
 import oldParchment from "../assets/old-parchment.webp";
 export default function ProjectCard({ data }) {
   return (
-    <div className="flex flex-col gap-2 w-[350px] animate__animated  items-center animate__backInUp">
+    <div className="flex flex-col gap-2 w-[350px] min-w-350px animate__animated  items-center animate__backInUp">
       <img
         src={data.img}
         alt="imge"

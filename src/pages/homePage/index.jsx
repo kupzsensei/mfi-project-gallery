@@ -21,7 +21,19 @@ const projects = [
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHWiipyUrSmD-gj_6Qh8oO32GTABB698j-XA&s",
   },
   {
-    title: "Student Management System",
+    title: "Warehouse Management System",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, doloribus obcaecati? Distinctio reiciendis alias veritatis atque, magni sit facere consequuntur nemo! Vitae, nobis quia eveniet error vel eaque placeat sint?",
+    img: "https://codezips.com/wp-content/uploads/2020/08/stud_man.png",
+  },
+  {
+    title: "Inventory Management System",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, doloribus obcaecati? Distinctio reiciendis alias veritatis atque, magni sit facere consequuntur nemo! Vitae, nobis quia eveniet error vel eaque placeat sint?",
+    img: "https://codezips.com/wp-content/uploads/2020/08/stud_man.png",
+  },
+  {
+    title: "Student Grading System",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, doloribus obcaecati? Distinctio reiciendis alias veritatis atque, magni sit facere consequuntur nemo! Vitae, nobis quia eveniet error vel eaque placeat sint?",
     img: "https://codezips.com/wp-content/uploads/2020/08/stud_man.png",
@@ -75,7 +87,7 @@ export default function Homepage() {
             Projects{" "}
           </h1>
         </div>
-        <h1
+        {/* <h1
           className="font-bold hover:underline cursor-pointer py-6 text-gray-500 px-8 hover:text-white drop-shadow-sm"
           style={{
             backgroundImage: `url(${brushStroke})`,
@@ -85,10 +97,10 @@ export default function Homepage() {
           }}
         >
           See more
-        </h1>
+        </h1> */}
       </div>
 
-      <section className="flex gap-8 justify-between flex-col lg:flex-row items-center p-5">
+      <section className="flex gap-8 justify-center flex-col lg:flex-row items-center p-5 flex-wrap">
         {projects?.map((project) => (
           <ProjectCard data={project} />
         ))}
@@ -96,7 +108,7 @@ export default function Homepage() {
 
       <section className="flex justify-center my-10 pb-10">
         <div
-        onClick={() => setMsgModal(true)}
+          onClick={() => setMsgModal(true)}
           className="w-full cursor-pointer max-w-[300px] h-[80px] flex justify-center items-center  font-bold italic drop-shadow-sm"
           style={{
             backgroundImage: `url(${oldParchment})`,
@@ -121,8 +133,13 @@ export default function Homepage() {
             on
           >
             <div className="flex gap-3 justify-between">
-            <h1>Leave a message</h1>
-            <button onClick={() => setMsgModal(false)} className="text-red-800">close</button>
+              <h1>Leave a message</h1>
+              <button
+                onClick={() => setMsgModal(false)}
+                className="text-red-800"
+              >
+                close
+              </button>
             </div>
             <textarea
               placeholder="type your msg here..."

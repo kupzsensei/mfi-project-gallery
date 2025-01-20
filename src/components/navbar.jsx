@@ -77,7 +77,7 @@ export default function Navbar({ setMenu }) {
         >
           Contacts
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/projects"
           className={({ isActive }) =>
             isActive
@@ -95,7 +95,7 @@ export default function Navbar({ setMenu }) {
           }
         >
           Projects
-        </NavLink>
+        </NavLink> */}
       </div>
       <div className="lg:hidden">
         <img

@@ -99,7 +99,7 @@ export default function Homepage() {
           />
           <h1 className="font-medium">Mt. Amuyao </h1>
         </div>
-        <div className="flex flex-col gap-5 items-center flex-1 justify-center">
+        <div className="flex flex-col gap-5 items-center flex-1 justify-center p-4">
           <p className="max-w-[450px] text-center text-xl">
             "Passionate Full-Stack Web Developer creating dynamic, user-friendly
             web applications. With expertise in modern frontend and backend
@@ -110,7 +110,7 @@ export default function Homepage() {
       </section>
       <div className="flex justify-center">
         {" "}
-        <h1 className="font-bold text-2xl text-yellow-500/80 drop-shadow-lg">
+        <h1 className="font-bold text-2xl text-yellow-500/80 drop-shadow-lg text-center">
           "Bringing Ideas to Life with Code"
         </h1>
       </div>

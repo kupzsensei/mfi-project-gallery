@@ -13,15 +13,15 @@ export default function ProjectCard({ data }) {
       <div className="flex flex-col gap-2">
         <div className="flex gap-3">
           <h1 className="text-gray-500">Client : </h1>
-          <h1>LA Global Product Trends Inc.</h1>
+          <h1>{data?.client}</h1>
         </div>
         <div className="flex gap-3">
           <h1 className="text-gray-500">Frontend : </h1>
-          <h1>ReactJS</h1>
+          <h1>{data?.frontend}</h1>
         </div>
         <div className="flex gap-3">
           <h1 className="text-gray-500">Backend : </h1>
-          <h1>Django REST API</h1>
+          <h1>{data?.backend}</h1>
         </div>
       </div>
     </div>

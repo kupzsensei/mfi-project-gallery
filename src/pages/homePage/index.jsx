@@ -3,46 +3,90 @@ import oldParchment from "../../assets/old-parchment.webp";
 import signage from "../../assets/signage.png";
 import menuBackground from "../../assets/nav-container.webp";
 import ProjectCard from "../../components/project-card";
-import { useOutletContext } from "react-router-dom";
+import { NavLink, useOutletContext } from "react-router-dom";
 import vintagePaper from "../../assets/vintage-paper.png";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { sendMessageAPI } from "../../API/sendMessageAPI";
 
 const projects = [
   {
-    title: "Inventory System",
-    description:
-      "An inventory system is a process that tracks and manages a company's stock, supplies, and sales. It helps companies ensure they have the right amount of products to meet demand without having too much or too little.",
-    img: "https://images.ctfassets.net/hfb264dqso7g/7BIuhKgTlUYlNRQrWwd9FE/d3bd1aa1d0a9dadd21a4601035a2e123/multichannel-orders-screenshot.jpg",
+    title: "Inventory Management System",
+    img: "https://cdn.dribbble.com/userupload/14163171/file/original-a95fcedc4b09d5570e5aeac23c479093.png?resize=1024x768&vertical=center",
+    frontend: "ReactJS",
+    backend: "Django REST API",
+    client: "LA Global Product Trends Inc.",
   },
   {
     title: "Point of Sale System",
-    description:
-      "A point-of-sale (POS) system is a combination of hardware and software that helps businesses process payments and manage their finances. POS systems can be used in brick-and-mortar stores, online stores, and hospitality settings. ",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHWiipyUrSmD-gj_6Qh8oO32GTABB698j-XA&s",
+    img: "https://cdn.dribbble.com/userupload/4446206/file/original-37263fbb60646de8f98190e140b53d2c.png?resize=1024x768&vertical=center",
+    frontend: "ReactJS",
+    backend: "Django REST API",
+    client: "LA Global Product Trends Inc.",
   },
   {
     title: "Warehouse Management System",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, doloribus obcaecati? Distinctio reiciendis alias veritatis atque, magni sit facere consequuntur nemo! Vitae, nobis quia eveniet error vel eaque placeat sint?",
-    img: "https://codezips.com/wp-content/uploads/2020/08/stud_man.png",
+    img: "https://cdn.dribbble.com/userupload/10129863/file/original-340083a1415e48bba7cbe8c19fe9f00f.png?resize=1024x768&vertical=center",
+    frontend: "ReactJS",
+    backend: "Django REST API",
+    client: "LA Global Product Trends Inc.",
   },
   {
     title: "Inventory Management System",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, doloribus obcaecati? Distinctio reiciendis alias veritatis atque, magni sit facere consequuntur nemo! Vitae, nobis quia eveniet error vel eaque placeat sint?",
-    img: "https://codezips.com/wp-content/uploads/2020/08/stud_man.png",
+    img: "https://cdn.dribbble.com/userupload/14163171/file/original-a95fcedc4b09d5570e5aeac23c479093.png?resize=1024x768&vertical=center",
+    frontend: "ReactJS",
+    backend: "Django REST API",
+    client: "MFI Polytechnic Institute Inc.",
   },
   {
-    title: "Student Grading System",
+    title: "Room Management System",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, doloribus obcaecati? Distinctio reiciendis alias veritatis atque, magni sit facere consequuntur nemo! Vitae, nobis quia eveniet error vel eaque placeat sint?",
-    img: "https://codezips.com/wp-content/uploads/2020/08/stud_man.png",
+    img: "https://cdn.dribbble.com/userupload/8525604/file/original-c27b6a25bd9730bfa8ef4c76f39837f4.png?resize=1024x768&vertical=center",
+    frontend: "ReactJS",
+    backend: "Django REST API",
+    client: "Personal Project",
+  },
+  {
+    title: "Accounting System",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, doloribus obcaecati? Distinctio reiciendis alias veritatis atque, magni sit facere consequuntur nemo! Vitae, nobis quia eveniet error vel eaque placeat sint?",
+    img: "https://cdn.dribbble.com/userupload/6447512/file/original-b88b55d10079bf48d50f5f2eb26b42a1.png?resize=1024x768&vertical=center",
+    frontend: "ReactJS",
+    backend: "Django REST API",
+    client: "Personal Project",
   },
 ];
 
 export default function Homepage() {
   const [menu, setMenu] = useOutletContext();
   const [msgModal, setMsgModal] = useState(false);
+
+  const msgContentRef = useRef(null);
+  const msgSenderRef = useRef(null);
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    const postData = new FormData();
+    postData.append("msg", msgContentRef.current.value);
+    postData.append("email", msgSenderRef.current.value);
+    // console.log(, msgSenderRef.current.value);
+
+    sendMessageAPI(postData).then((res) => {
+      console.log(res);
+      if (res.ok) {
+        setMsgModal(false);
+        alert("your message was sent successfully.");
+      } else {
+        alert(
+          "Failed to send  a message. please fill up all the information needed"
+        );
+      }
+    });
+  };
   return (
     <>
       <section className="flex flex-col lg:flex-row max-w-[1280px] gap-5 items-center my-10">
@@ -101,8 +145,8 @@ export default function Homepage() {
       </div>
 
       <section className="flex gap-8 justify-center flex-col lg:flex-row items-center p-5 flex-wrap">
-        {projects?.map((project) => (
-          <ProjectCard data={project} />
+        {projects?.map((project, index) => (
+          <ProjectCard key={index} data={project} />
         ))}
       </section>
 
@@ -123,19 +167,21 @@ export default function Homepage() {
 
       {msgModal && (
         <div className="w-screen h-screen fixed top-0 left-0 bg-black/50 flex justify-center items-center drop-shadow-md">
-          <div
+          <form
+            // onSubmit={handleSendMessage}
             className="flex flex-col p-5 w-[300px] h-[300px] gap-2"
             style={{
               backgroundImage: `url(${vintagePaper})`,
               backgroundPosition: "center",
               backgroundSize: "cover",
             }}
-            on
           >
             <div className="flex gap-3 justify-between">
               <h1>Leave a message</h1>
               <button
-                onClick={() => setMsgModal(false)}
+                onClick={() => {
+                  setMsgModal(false);
+                }}
                 className="text-red-800"
               >
                 close
@@ -145,17 +191,21 @@ export default function Homepage() {
               placeholder="type your msg here..."
               name="message"
               id="msg"
+              ref={msgContentRef}
+              required
               className="outline-none placeholder-black/80 border border-gray-400 flex-1 min-h-0 min-w-0 text-xs p-2 bg-transparent"
             ></textarea>
             <div className="flex gap-3 justify-between">
               <input
+                ref={msgSenderRef}
                 type="email"
+                required
                 placeholder="leave your email here.. "
                 className="outline-none placeholder-black/80 border border-gray-300 bg-transparent px-2 py-1 text-xs"
               />
-              <button>send</button>
+              <button onClick={handleSendMessage}>send</button>
             </div>
-          </div>
+          </form>
         </div>
       )}
 
@@ -170,24 +220,31 @@ export default function Homepage() {
               backgroundPosition: "center",
             }}
           >
-            <h1 className="text-black/70 hover:line-through cursor-pointer">
+            <NavLink
+              to="/"
+              className="text-black/70 hover:line-through cursor-pointer"
+            >
               Home
-            </h1>
-            <h1 className="text-black/70 hover:line-through cursor-pointer">
+            </NavLink>
+            <NavLink
+              to="/about"
+              className="text-black/70 hover:line-through cursor-pointer"
+            >
               About
-            </h1>
-            <h1 className="text-black/70 hover:line-through cursor-pointer">
+            </NavLink>
+            <NavLink
+              to="/contacts"
+              className="text-black/70 hover:line-through cursor-pointer"
+            >
               Contacts
-            </h1>
-            <h1 className="text-black/70 hover:line-through cursor-pointer">
-              Projects
-            </h1>
-            <h1
+            </NavLink>
+
+            <NavLink
               className="text-red-900/70 hover:line-through cursor-pointer"
               onClick={() => setMenu(false)}
             >
               Cancel
-            </h1>
+            </NavLink>
           </div>
         </div>
       )}
